@@ -20,4 +20,10 @@ export class TodoListComponent {
     console.log('Aktualna lista todo:', this.todos);
   }
 
+  changeTodoStatus(i: number) {
+    this.todos[i].isComplete = !this.todos[i].isComplete;
+
+    console.log(this.todos);
+    }
+
 }

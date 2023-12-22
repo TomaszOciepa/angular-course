@@ -10,6 +10,8 @@
             <input type ="checkbox"
             class="form-check-input my-1"
             [checked]="todo.isComplete"
+            (change)="changeTodoStatus(i)"
+            
             >
             <span class="todo-item">{{i + 1 }}. {{ todo.name }}</span>
         </li>
