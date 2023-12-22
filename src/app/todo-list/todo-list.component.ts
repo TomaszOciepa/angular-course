@@ -10,9 +10,12 @@ export class TodoListComponent {
 
   todos: Todo[] = [];
 
+  errorMessage = '';
+
+
   addTodo(todo: string): void{
     if(todo.length <= 3){
-      alert('Zadanie powinno mieć co najmniej 4 znaki.');
+      this.errorMessage = 'Zadanie powinno mieć co najmniej 4 znaki.';
       return;
     }
 
@@ -24,6 +27,10 @@ export class TodoListComponent {
       todo.isComplete = !todo.isComplete;
 
     console.log(this.todos);
+    }
+
+    clearErrorMessage(){
+      this.errorMessage = '';
     }
 
 }
