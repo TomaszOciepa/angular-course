@@ -25,3 +25,9 @@
     <!-- <ng-template #noTask>Aktualnie brak zadań</ng-template> -->
 </div>
 </div>
+
+<div [ngSwitch]="testSwitchCase">
+    <p *ngSwitchCase="'tak'">Wyświetlam tak!</p>
+    <p *ngSwitchCase="'nie'">Wyświetlam nie!</p>
+    <p *ngSwitchDefault>Wyświetlam default</p>
+</div>

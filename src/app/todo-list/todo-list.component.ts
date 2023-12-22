@@ -12,6 +12,8 @@ export class TodoListComponent {
 
   errorMessage = '';
 
+  testSwitchCase = 'tak';
+
 
   addTodo(todo: string): void{
     if(todo.length <= 3){
