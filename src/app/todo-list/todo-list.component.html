@@ -18,7 +18,7 @@
             (change)="changeTodoStatus(todo)"
 
             >
-            <span class="todo-item"  [ngStyle]="{'text-decoration' : todo.isComplete ? 'line-through' : 'initial'}">{{i + 1 }}. {{ todo.name }}</span>
+            <span class="todo-item" [ngClass]="{'text-decoration-line-through' : todo.isComplete}">{{i + 1 }}. {{ todo.name }}</span>
         </li>
     </ul>
     <h5 *ngIf="todos.length === 0">Aktualnie brak zadań</h5>
