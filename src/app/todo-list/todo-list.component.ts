@@ -21,7 +21,6 @@ export class TodoListComponent {
     }
 
     this.todos.push({ name: todo, isComplete: false});
-    console.log('Aktualna lista todo:', this.todos);
   }
 
     clearErrorMessage(){

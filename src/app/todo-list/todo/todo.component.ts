@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
+import { Component, DoCheck, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Todo } from 'src/app/shared/interfaces/todo.interface';
 
 @Component({
@@ -6,7 +6,7 @@ import { Todo } from 'src/app/shared/interfaces/todo.interface';
   templateUrl: './todo.component.html',
   styleUrls: ['./todo.component.css']
 })
-export class TodoComponent implements OnChanges{
+export class TodoComponent implements DoCheck{
 
 @Input() todo!: Todo;
 @Input() i!: number;
@@ -14,9 +14,11 @@ export class TodoComponent implements OnChanges{
 
 openModal = false;
 
-ngOnChanges(changes: SimpleChanges): void {
-  console.log(changes)
-}
+keyValueTest = {name: 'test', age: 12}
+
+  ngDoCheck(): void {
+    console.log("ngDoCheck został wykonany")
+    }
 
 changeTodoStatus(todo: Todo) {
   todo.isComplete = !todo.isComplete;
