@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Todo } from '../shared/interfaces/todo.interface';
+import { FormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-todo-list',
@@ -10,14 +12,11 @@ export class TodoListComponent {
 
   todos: Todo[] = [];
 
-  errorMessage = '';
-
-  testSwitchCase = 'tak';
-
+  errorMessages = '';
 
   addTodo(todo: string): void{
     if(todo.length <= 3){
-      this.errorMessage = 'Zadanie powinno mieć co najmniej 4 znaki.';
+      this.errorMessages = 'Zadanie powinno mieć co najmniej 4 znaki.';
       return;
     }
 
@@ -32,7 +31,7 @@ export class TodoListComponent {
     }
 
     clearErrorMessage(){
-      this.errorMessage = '';
+      this.errorMessages = '';
     }
 
 }
