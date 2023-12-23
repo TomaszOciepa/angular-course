@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Todo } from '../shared/interfaces/todo.interface';
 import { FormsModule } from '@angular/forms';
+import { TodoService } from '../core/services/todo.service';
 
 
 @Component({
@@ -13,6 +14,8 @@ export class TodoListComponent {
   todos: Todo[] = JSON.parse(localStorage.getItem('todos')!) ?? [];
 
   errorMessages = '';
+
+  constructor(private todoService: TodoService){}
 
   addTodo(todo: string): void{
     if(todo.length <= 3){
@@ -32,5 +35,4 @@ export class TodoListComponent {
       this.todos = this.todos.filter((todo, index)=> index !== i)
       localStorage.setItem('todos', JSON.stringify(this.todos))
     }
-
 }
