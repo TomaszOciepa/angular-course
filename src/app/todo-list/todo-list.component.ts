@@ -10,7 +10,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class TodoListComponent {
 
-  todos: Todo[] = [];
+  todos: Todo[] = JSON.parse(localStorage.getItem('todos')!) ?? [];
 
   errorMessages = '';
 
@@ -21,6 +21,7 @@ export class TodoListComponent {
     }
 
     this.todos.push({ name: todo, isComplete: false});
+    localStorage.setItem('todos', JSON.stringify(this.todos))
   }
 
     clearErrorMessage(){
@@ -29,6 +30,7 @@ export class TodoListComponent {
 
     deleteTodo(i: number){
       this.todos = this.todos.filter((todo, index)=> index !== i)
+      localStorage.setItem('todos', JSON.stringify(this.todos))
     }
 
 }
