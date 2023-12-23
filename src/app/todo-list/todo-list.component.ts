@@ -24,12 +24,6 @@ export class TodoListComponent {
     console.log('Aktualna lista todo:', this.todos);
   }
 
-  changeTodoStatus(todo: Todo) {
-      todo.isComplete = !todo.isComplete;
-
-    console.log(this.todos);
-    }
-
     clearErrorMessage(){
       this.errorMessages = '';
     }
