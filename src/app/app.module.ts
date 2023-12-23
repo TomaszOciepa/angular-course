@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -30,7 +30,9 @@ registerLocaleData(localePl)
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    {provide: LOCALE_ID, useValue: 'pl'}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
