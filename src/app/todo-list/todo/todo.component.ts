@@ -11,9 +11,15 @@ export class TodoComponent {
 @Input() todo!: Todo;
 @Input() i!: number;
 
+openModal = false;
+
 changeTodoStatus(todo: Todo) {
   todo.isComplete = !todo.isComplete;
 
+}
+
+toggleModal():void{
+  this.openModal = !this.openModal;
 }
 
 }
