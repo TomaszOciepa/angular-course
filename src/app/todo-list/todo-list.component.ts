@@ -11,20 +11,20 @@ import { TodoService } from '../core/services/todo.service';
 })
 export class TodoListComponent {
 
-  todos: Todo[] = JSON.parse(localStorage.getItem('todos')!) ?? [];
+  todos: Todo[] = this.todoService.todos;
 
   errorMessages = '';
 
   constructor(private todoService: TodoService){}
+
 
   addTodo(todo: string): void{
     if(todo.length <= 3){
       this.errorMessages = 'Zadanie powinno mieć co najmniej 4 znaki.';
       return;
     }
-
-    this.todos.push({ name: todo, isComplete: false});
-    localStorage.setItem('todos', JSON.stringify(this.todos))
+    this.todoService.addTodo(todo);
+    this.todos = this.todoService.todos;
   }
 
     clearErrorMessage(){
@@ -32,7 +32,7 @@ export class TodoListComponent {
     }
 
     deleteTodo(i: number){
-      this.todos = this.todos.filter((todo, index)=> index !== i)
-      localStorage.setItem('todos', JSON.stringify(this.todos))
+      this.todoService.deleteTodo(i);
+      this.todos = this.todoService.todos;
     }
 }
