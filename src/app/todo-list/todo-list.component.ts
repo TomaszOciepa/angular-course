@@ -1,7 +1,8 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { Todo } from '../shared/interfaces/todo.interface';
 import { FormsModule } from '@angular/forms';
 import { TodoService } from '../core/services/todo.service';
+import { TestService } from '../core/services/test.service';
 
 
 @Component({
@@ -11,13 +12,11 @@ import { TodoService } from '../core/services/todo.service';
 })
 export class TodoListComponent {
 
-todoService = inject(TodoService)
-
   todos: Todo[] = this.todoService.todos;
 
   errorMessages = '';
 
-  constructor(){}
+  constructor(private todoService: TodoService, private testService: TestService){}
 
 
   addTodo(todo: string): void{
