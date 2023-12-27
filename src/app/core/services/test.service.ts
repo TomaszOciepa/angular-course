@@ -6,7 +6,7 @@ import { TodoService } from './todo.service';
 })
 export class TestService {
 
-  constructor(private todoService: TodoService) {
-    this.todoService.log();
+  constructor() {
+  
    }
 }

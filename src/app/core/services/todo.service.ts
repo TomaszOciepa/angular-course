@@ -10,10 +10,6 @@ export class TodoService {
 
   constructor() { }
 
-  log(){
-    console.log('TEST');
-  }
-
   public get todos(){
       return this._todos.slice();
   }

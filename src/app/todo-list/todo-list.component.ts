@@ -16,7 +16,7 @@ export class TodoListComponent {
 
   errorMessages = '';
 
-  constructor(private todoService: TodoService, private testService: TestService){}
+  constructor(private todoService: TodoService){}
 
 
   addTodo(todo: string): void{
