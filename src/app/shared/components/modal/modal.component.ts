@@ -12,6 +12,8 @@ export class ModalComponent implements OnInit, OnDestroy{
   @Output() close = new EventEmitter<void>();
 
   sub!: Subscription;
+  obs$ = interval(1000);
+
 
   onClose(){
     this.close.emit();
@@ -24,13 +26,14 @@ export class ModalComponent implements OnInit, OnDestroy{
     //   complete: () => console.log('Test')
     // })
     
-    this.sub = interval(1000).pipe(take(5)).subscribe({
-      next: number => console.log(number)
-    });
-    console.log(this.sub);
+    // this.sub = interval(1000).pipe(take(5)).subscribe({
+    //   next: number => console.log(number)
+    // });
+    // console.log(this.sub);
+    
   }
   ngOnDestroy(): void {
-    console.log(this.sub);
+    // console.log(this.sub);
     // this.sub.unsubscribe();
   }
 
