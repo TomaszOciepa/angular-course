@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
-import { Subscription, filter, from, fromEvent, map, of, switchMap, tap } from 'rxjs';
+import { BehaviorSubject, Subject, Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-modal',
@@ -11,10 +11,8 @@ export class ModalComponent implements OnInit, OnDestroy{
   @Input() title!: string;
   @Output() close = new EventEmitter<void>();
 
-  sub!: Subscription;
+  sub: Subscription = new Subscription() 
  
-
-
   onClose(){
     this.close.emit();
   }
@@ -25,19 +23,24 @@ export class ModalComponent implements OnInit, OnDestroy{
     //   error: err => console.log(err),
     //   complete: () => console.log('Test')
     // })
-    of(1).pipe(
-        tap(numb => numb *2) // tap() nie wpływa na strumień końcowy
-      )
-      .subscribe({
-        next: numb => console.log(numb)
-      })
 
     // console.log(this.sub);
-    
+
+    const subject = new Subject<number>();
+    const bsubject = new BehaviorSubject<number>(5)
+
+    this.sub.add(subject.subscribe({
+        next: value => console.log(value)
+    }))
+    this.sub.add(bsubject.subscribe({
+      next: value => console.log(value)
+  }))
+    subject.next(5)
+    console.log(this.sub)
   }
   ngOnDestroy(): void {
     if(this.sub){
-      // this.sub.unsubscribe();
+      this.sub.unsubscribe();
     }
     // console.log(this.sub);
 
