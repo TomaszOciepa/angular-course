@@ -1,4 +1,6 @@
+import { NgFor } from '@angular/common';
 import { Component, EventEmitter, Output } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-add-todo-form',
@@ -11,7 +13,8 @@ export class AddTodoFormComponent {
   todoName = '';
 
 
-  addNewTodo(){
+  addNewTodo(form: NgForm){
+    console.log(form);
     this.addTodo.emit(this.todoName);
   }
 }
