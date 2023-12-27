@@ -12,6 +12,7 @@ import { TodoComponent } from './todo-list/todo/todo.component';
 import { ModalComponent } from './shared/components/modal/modal.component';
 import localePl from '@angular/common/locales/pl'
 import { registerLocaleData } from '@angular/common';
+import { FirstLetterDirective } from './shared/validators/first-letter.directive';
 
 registerLocaleData(localePl)
 
@@ -23,7 +24,8 @@ registerLocaleData(localePl)
     AlertComponent,
     AddTodoFormComponent,
     TodoComponent,
-    ModalComponent
+    ModalComponent,
+    FirstLetterDirective
   ],
   imports: [
     BrowserModule,
