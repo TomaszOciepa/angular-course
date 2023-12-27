@@ -26,18 +26,8 @@ export class ModalComponent implements OnInit, OnDestroy{
 
     // console.log(this.sub);
 
-    const subject = new Subject<number>();
-    const bsubject = new BehaviorSubject<number>(5)
-
-    this.sub.add(subject.subscribe({
-        next: value => console.log(value)
-    }))
-    this.sub.add(bsubject.subscribe({
-      next: value => console.log(value)
-  }))
-    subject.next(5)
-    console.log(this.sub)
   }
+
   ngOnDestroy(): void {
     if(this.sub){
       this.sub.unsubscribe();
