@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
-import { Subscription, filter, from, fromEvent, map, of, switchMap } from 'rxjs';
+import { Subscription, filter, from, fromEvent, map, of, switchMap, tap } from 'rxjs';
 
 @Component({
   selector: 'app-modal',
@@ -26,7 +26,7 @@ export class ModalComponent implements OnInit, OnDestroy{
     //   complete: () => console.log('Test')
     // })
     of(1).pipe(
-        switchMap(numb => of(numb *2))
+        tap(numb => numb *2) // tap() nie wpływa na strumień końcowy
       )
       .subscribe({
         next: numb => console.log(numb)
