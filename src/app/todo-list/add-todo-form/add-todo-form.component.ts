@@ -12,7 +12,10 @@ export class AddTodoFormComponent{
 
   todoName = '';
 
+  person = {name: 'test', surname: 'testowy', role:'father'}
+
   addNewTodo(){
+    console.log(this.person)
     this.addTodo.emit(this.todoName);
   }
 }

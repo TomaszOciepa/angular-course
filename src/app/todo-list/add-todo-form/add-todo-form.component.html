@@ -7,6 +7,12 @@
         <app-alert *ngIf="todo.control.errors?.['maxlength']" [errorMessage]="'Ta kontrolka nie moze miec wiecej niz 50 znaków'"></app-alert>    
     </ng-container>
     
+    <div ngModelGroup="person" #group='ngModelGroup'>
+        <input type="text" [(ngModel)]="person.name" name="name" required>
+        <input type="text" [(ngModel)]="person.surname" name="surname" required>
+        <input type="text" [(ngModel)]="person.role" name="role" required>
+    </div>
+
     <button type="submit" class="btn btn-primary mt-3" [disabled]="!form.valid">Dodaj zadanie</button>
 </form>
 
