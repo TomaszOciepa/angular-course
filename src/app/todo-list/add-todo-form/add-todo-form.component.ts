@@ -13,8 +13,7 @@ export class AddTodoFormComponent {
   todoName = '';
 
 
-  addNewTodo(form: NgForm){
-    console.log(form);
+  addNewTodo(){
     this.addTodo.emit(this.todoName);
   }
 }
