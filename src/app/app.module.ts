@@ -16,6 +16,7 @@ import { FirstLetterDirective } from './shared/validators/first-letter.directive
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { TodoDetailsComponent } from './todo-details/todo-details.component';
 
 registerLocaleData(localePl)
 
@@ -31,7 +32,8 @@ registerLocaleData(localePl)
     FirstLetterDirective,
     HomeComponent,
     FooterComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    TodoDetailsComponent
   ],
   imports: [
     BrowserModule,
