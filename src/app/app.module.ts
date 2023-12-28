@@ -17,6 +17,8 @@ import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { TodoDetailsComponent } from './todo-details/todo-details.component';
+import { ChildAComponent } from './todo-list/child-a/child-a.component';
+import { ChildBComponent } from './todo-list/child-b/child-b.component';
 
 registerLocaleData(localePl)
 
@@ -33,7 +35,9 @@ registerLocaleData(localePl)
     HomeComponent,
     FooterComponent,
     PageNotFoundComponent,
-    TodoDetailsComponent
+    TodoDetailsComponent,
+    ChildAComponent,
+    ChildBComponent
   ],
   imports: [
     BrowserModule,
