@@ -3,7 +3,7 @@
     {
       "id": 1,
       "name": "zadanie testowe",
-      "isComplete": true
+      "isComplete": false
     },
     {
       "name": "test 1",
