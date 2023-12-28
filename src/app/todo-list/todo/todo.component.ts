@@ -1,4 +1,5 @@
 import { Component, DoCheck, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Route, Router } from '@angular/router';
 import { Todo } from 'src/app/shared/interfaces/todo.interface';
 
 @Component({
@@ -15,6 +16,14 @@ export class TodoComponent implements DoCheck{
 openModal = false;
 
 keyValueTest = {name: 'test', age: 12}
+
+  constructor(private router: Router){
+
+  }
+
+  navigateToDetails() {
+    this.router.navigate(['/todo', this.i])
+  }
 
   ngDoCheck(): void {
     console.log("ngDoCheck został wykonany")

@@ -6,6 +6,7 @@
     >
     <span class="todo-item" [ngClass]="{'text-decoration-line-through' : todo.isComplete}">{{i + 1 }}. {{ todo.name }}</span>
 <button type="button" class="btn btn-danger btn-sm mx-2" (click)="toggleModal()">Usuń</button>
+<button type="button" class="btn btn-info btn-sm mx-2" (click)="navigateToDetails()">Details</button>
 </li>
 
 <app-modal *ngIf="openModal" (close)="toggleModal()" [title]="'czy na pewno chcesz usunąć zadanie o numerze' + (i + 1) + '?'">
