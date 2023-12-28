@@ -4,7 +4,9 @@ import { HomeComponent } from './home/home.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 
 const routes: Routes = [
-  {path: '', component: HomeComponent, pathMatch: 'full'},
+  {path: '', redirectTo: '/home', pathMatch: 'full'},
+  // {path: '', redirectTo: '/home', pathMatch: 'prefix'},
+  {path: 'home', component: HomeComponent, pathMatch: 'full'},
   {path: 'todo', component: TodoListComponent}
 ];
 
