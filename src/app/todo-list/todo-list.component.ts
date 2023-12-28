@@ -49,8 +49,16 @@ export class TodoListComponent implements OnInit, OnDestroy{
       this.errorMessages = '';
     }
 
-    deleteTodo(i: number){
-      this.todoService.deleteTodo(i);
+    deleteTodo(id: number){
+      this.todoApiService.deleteTodo(id).subscribe({
+        next: value =>{
+          console.log(value)
+        },
+        error: err =>{
+          this.errorMessages = 'Wystąpił błąd spróbuj ponownie.'
+        }
+      })
+      // this.todoService.deleteTodo(id);
       // this.todos = this.todoService.todos;
     }
 
