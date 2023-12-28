@@ -6,8 +6,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 
 const routes: Routes = [
   {path: '', component: HomeComponent, pathMatch: 'full'},
-  {path: 'todo', component: TodoListComponent},
-  {path: '**', component: PageNotFoundComponent}
+  {path: 'todo', component: TodoListComponent, title: 'Dodaj zadanie!'},
+  {path: '**', component: PageNotFoundComponent, title: 'Page not found'}
 ];
 
 @NgModule({
