@@ -3,6 +3,8 @@ import { Todo } from '../shared/interfaces/todo.interface';
 import { TodoService } from '../core/services/todo.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { TodoApiService } from '../core/services/todo-api.service';
+import { switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-todo-details',
@@ -16,11 +18,14 @@ export class TodoDetailsComponent implements OnInit {
 
   id!: number;
 
+  errorMessages = '';
+
   constructor(
     private todoService: TodoService,
     private router: Router,
     private route: ActivatedRoute,
-    private location: Location
+    private location: Location,
+    private todoApiService: TodoApiService
   )
   {}
   ngOnInit(): void {
@@ -35,7 +40,23 @@ export class TodoDetailsComponent implements OnInit {
 
     this.route.paramMap.subscribe((params)=>{
       this.id = Number(params.get('id'));
-      this.todo = this.todoService.getTodo(this.id);
+      // this.todo = this.todoService.getTodo(this.id);
+    })
+
+    this.route.paramMap.pipe(
+      switchMap((params) => this.todoApiService.getTodo(Number(params.get('id'))))
+    ).subscribe({
+      next: todo => {
+        this.todo = {...todo}
+      },
+      error: err =>{
+        if(err.status === 404){
+          this.errorMessages = "Nie ma zadania o podanym numerze"
+        }else{
+          this.errorMessages = 'Wystąpił błąd. Spróbuj ponownie'
+        }
+        
+      }
     })
 
     // console.log(
@@ -53,6 +74,10 @@ export class TodoDetailsComponent implements OnInit {
 
   navigateBack(){
     this.location.back();
+  }
+
+  clearErrorMessage(){
+    this.errorMessages = '';
   }
 
 }
