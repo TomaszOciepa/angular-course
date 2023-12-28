@@ -1,6 +1,14 @@
 {
-    "todo": [
-      { "id": 1, "name": "zadanie testowe", "isComplete": false }
-    ]
-  
-  }
+  "todo": [
+    {
+      "id": 1,
+      "name": "zadanie testowe",
+      "isComplete": false
+    },
+    {
+      "name": "test 1",
+      "isComplete": false,
+      "id": 2
+    }
+  ]
+}
