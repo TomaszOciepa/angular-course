@@ -10,9 +10,10 @@ import { Todo } from 'src/app/shared/interfaces/todo.interface';
 export class TodoComponent implements DoCheck{
 
 @Input() todo!: Todo;
+@Input() id!: number;
 @Input() i!: number;
 @Output() delete = new EventEmitter<void>();
-
+@Output() changeStatus = new EventEmitter<number>();
 openModal = false;
 
 keyValueTest = {name: 'test', age: 12}
@@ -27,7 +28,7 @@ keyValueTest = {name: 'test', age: 12}
       // queryParams: {id: this.i, test: 'wartość'}
       state: {example: 'test'}
     }
-    this.router.navigate([this.i], navigationExtras)
+    this.router.navigate([this.id], navigationExtras)
   }
 
   ngDoCheck(): void {
@@ -35,7 +36,7 @@ keyValueTest = {name: 'test', age: 12}
     }
 
 changeTodoStatus(todo: Todo) {
-  todo.isComplete = !todo.isComplete;
+  this.changeStatus.emit(this.id);
 
 }
 
