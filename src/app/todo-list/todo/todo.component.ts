@@ -1,5 +1,5 @@
 import { Component, DoCheck, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
-import { Route, Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Route, Router } from '@angular/router';
 import { Todo } from 'src/app/shared/interfaces/todo.interface';
 
 @Component({
@@ -17,12 +17,15 @@ openModal = false;
 
 keyValueTest = {name: 'test', age: 12}
 
-  constructor(private router: Router){
+  constructor(private router: Router, private route: ActivatedRoute){
 
   }
 
   navigateToDetails() {
-    this.router.navigate(['/todo', this.i])
+    const navigationExtras: NavigationExtras = {
+      relativeTo: this.route
+    }
+    this.router.navigate([this.i], navigationExtras)
   }
 
   ngDoCheck(): void {
