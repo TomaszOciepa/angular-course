@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/home', pathMatch: 'full'},
-  // {path: '', redirectTo: '/home', pathMatch: 'prefix'},
-  {path: 'home', component: HomeComponent, pathMatch: 'full'},
-  {path: 'todo', component: TodoListComponent}
+  {path: '', component: HomeComponent, pathMatch: 'full'},
+  {path: 'todo', component: TodoListComponent},
+  {path: '**', component: PageNotFoundComponent}
 ];
 
 @NgModule({

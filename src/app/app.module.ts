@@ -15,6 +15,7 @@ import { registerLocaleData } from '@angular/common';
 import { FirstLetterDirective } from './shared/validators/first-letter.directive';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 registerLocaleData(localePl)
 
@@ -29,7 +30,8 @@ registerLocaleData(localePl)
     ModalComponent,
     FirstLetterDirective,
     HomeComponent,
-    FooterComponent
+    FooterComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
