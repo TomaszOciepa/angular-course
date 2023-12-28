@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http'
 import { AlertComponent } from './shared/components/alert/alert.component';
 import { AddTodoFormComponent } from './todo-list/add-todo-form/add-todo-form.component';
 import { TodoComponent } from './todo-list/todo/todo.component';
@@ -42,7 +43,8 @@ registerLocaleData(localePl)
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    HttpClientModule,
+    FormsModule,
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'pl'}
