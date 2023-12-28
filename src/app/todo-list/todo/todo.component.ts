@@ -25,7 +25,7 @@ keyValueTest = {name: 'test', age: 12}
     const navigationExtras: NavigationExtras = {
       relativeTo: this.route,
       // queryParams: {id: this.i, test: 'wartość'}
-      
+      state: {example: 'test'}
     }
     this.router.navigate([this.i], navigationExtras)
   }
