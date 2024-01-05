@@ -3,6 +3,8 @@ import { Todo } from '../shared/interfaces/todo.interface';
 import { TodoService } from '../core/services/todo.service';
 import { Subscription } from 'rxjs';
 import { TodoApiService } from '../core/services/todo-api.service';
+import { Store } from '@ngrx/store';
+import { AppState } from '../store/app.reducer';
 
 @Component({
   selector: 'app-todo-list',
@@ -19,7 +21,8 @@ export class TodoListComponent implements OnInit, OnDestroy {
 
   constructor(
     private todoService: TodoService,
-    private todoApiService: TodoApiService
+    private todoApiService: TodoApiService,
+    private store: Store<AppState>
   ) {}
 
   ngOnInit(): void {
@@ -33,6 +36,12 @@ export class TodoListComponent implements OnInit, OnDestroy {
     //     },
     //   });
     // }
+
+    this.store.select('todos').subscribe({
+      next: (todos) => {
+        console.log(todos.todos);
+      },
+    });
   }
 
   addTodo(todo: string): void {
