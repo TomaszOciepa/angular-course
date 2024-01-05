@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { TodoApiService } from '../core/services/todo-api.service';
 import { Store } from '@ngrx/store';
 import { AppState } from '../store/app.reducer';
+import * as TodoListActions from './store/todo-list-action';
 
 @Component({
   selector: 'app-todo-list',
@@ -40,6 +41,7 @@ export class TodoListComponent implements OnInit, OnDestroy {
     this.store.select('todos').subscribe({
       next: (todos) => {
         console.log(todos.todos);
+        this.todos = [...todos.todos];
       },
     });
   }
@@ -51,6 +53,11 @@ export class TodoListComponent implements OnInit, OnDestroy {
     //   }
     // })
     // this.todos = this.todoService.todos;
+
+    const id = this.todos[this.todos.length - 1].id + 1;
+    this.store.dispatch(
+      TodoListActions.addTodo({ todo: { id, name: todo, isComplete: false } })
+    );
   }
 
   clearErrorMessage() {
