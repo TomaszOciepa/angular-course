@@ -3,7 +3,7 @@ import { Todo } from '../shared/interfaces/todo.interface';
 import { TodoService } from '../core/services/todo.service';
 import { Subscription } from 'rxjs';
 import { TodoApiService } from '../core/services/todo-api.service';
-import { Store, select } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { AppState } from '../store/app.reducer';
 import * as TodoListActions from './store/todo-list-action';
 import {
@@ -42,7 +42,7 @@ export class TodoListComponent implements OnInit, OnDestroy {
     //   });
     // }
 
-    this.sub = this.store.pipe(select(selectTodoListTodos)).subscribe({
+    this.sub = this.store.select(selectTodoListTodos).subscribe({
       next: (todos) => {
         console.log('Wszystkie zadania', todos);
         this.todos = [...todos];
