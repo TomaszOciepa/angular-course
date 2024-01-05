@@ -70,6 +70,8 @@ export class TodoListComponent implements OnInit, OnDestroy {
     //     this.errorMessages = 'Wystąpił błąd spróbuj ponownie.';
     //   },
     // });
+
+    this.store.dispatch(TodoListActions.deleteTodo({ id }));
   }
 
   changeToDoStatus(id: number, todo: Todo) {
@@ -80,6 +82,7 @@ export class TodoListComponent implements OnInit, OnDestroy {
     //       this.errorMessages = 'Wystąpił błąd spróbuj ponownie.';
     //     },
     //   });
+    this.store.dispatch(TodoListActions.changeTodoStatus({ id }));
   }
 
   ngOnDestroy(): void {
