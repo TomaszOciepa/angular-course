@@ -71,7 +71,7 @@ export class TodoListComponent implements OnInit, OnDestroy {
 
     const id = this.todos[this.todos.length - 1].id + 1;
     this.store.dispatch(
-      TodoListActions.addTodo({ todo: { id, name: todo, isComplete: false } })
+      TodoListActions.addTodo({ todo: { name: todo, isComplete: false } })
     );
   }
 
