@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { TodoApiService } from 'src/app/core/services/todo-api.service';
 import * as TodoListActions from './todo-list-action';
@@ -24,23 +24,23 @@ export class TodoListEffects {
     )
   );
 
-  addTodo$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(TodoListActions.addTodo),
-      switchMap((action) => {
-        return this.todoApiService.postTodo(action.todo).pipe(
-          map((todo) => TodoListActions.addTodoSuccess({ todo })),
-          catchError((err) =>
-            of(
-              TodoListActions.addTodoFailed({
-                errorMessage: 'Wystąpił błąd',
-              })
-            )
-          )
-        );
-      })
-    )
-  );
+  // addTodo$ = createEffect(() =>
+  //   this.actions$.pipe(
+  //     ofType(TodoListActions.addTodo),
+  //     switchMap((action) => {
+  //       return this.todoApiService.postTodo(action.todo).pipe(
+  //         map((todo) => TodoListActions.addTodoSuccess({ todo })),
+  //         catchError((err) =>
+  //           of(
+  //             TodoListActions.addTodoFailed({
+  //               errorMessage: 'Wystąpił błąd',
+  //             })
+  //           )
+  //         )
+  //       );
+  //     })
+  //   )
+  // );
 
   constructor(
     private actions$: Actions,
