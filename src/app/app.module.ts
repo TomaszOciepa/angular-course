@@ -6,12 +6,12 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
 import { AlertComponent } from './shared/components/alert/alert.component';
 import { AddTodoFormComponent } from './todo-list/add-todo-form/add-todo-form.component';
 import { TodoComponent } from './todo-list/todo/todo.component';
 import { ModalComponent } from './shared/components/modal/modal.component';
-import localePl from '@angular/common/locales/pl'
+import localePl from '@angular/common/locales/pl';
 import { registerLocaleData } from '@angular/common';
 import { FirstLetterDirective } from './shared/validators/first-letter.directive';
 import { HomeComponent } from './home/home.component';
@@ -20,8 +20,9 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { TodoDetailsComponent } from './todo-details/todo-details.component';
 import { ChildAComponent } from './todo-list/child-a/child-a.component';
 import { ChildBComponent } from './todo-list/child-b/child-b.component';
+import { StoreModule } from '@ngrx/store';
 
-registerLocaleData(localePl)
+registerLocaleData(localePl);
 
 @NgModule({
   declarations: [
@@ -38,17 +39,16 @@ registerLocaleData(localePl)
     PageNotFoundComponent,
     TodoDetailsComponent,
     ChildAComponent,
-    ChildBComponent
+    ChildBComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    StoreModule.forRoot({}),
   ],
-  providers: [
-    {provide: LOCALE_ID, useValue: 'pl'}
-  ],
-  bootstrap: [AppComponent]
+  providers: [{ provide: LOCALE_ID, useValue: 'pl' }],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
