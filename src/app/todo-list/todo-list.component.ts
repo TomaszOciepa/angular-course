@@ -9,6 +9,7 @@ import * as TodoListActions from './store/todo-list-action';
 import {
   selectTodoListActiveTodos,
   selectTodoListTodos,
+  selectTodoListTodosState,
 } from './store/todo-list.selector';
 
 @Component({
@@ -20,7 +21,7 @@ export class TodoListComponent implements OnInit, OnDestroy {
   // todos: Todo[] = this.todoService.todos;
   todos: Todo[] = [];
 
-  errorMessages = '';
+  errorMessages: null | string = null;
 
   sub!: Subscription;
 
@@ -34,18 +35,21 @@ export class TodoListComponent implements OnInit, OnDestroy {
     // this.sub = this.todoService.todoChanged.subscribe({
     //   next: (arrTodos) => (this.todos = arrTodos),
     // });
-    if (this.todos.length === 0) {
-      this.todoApiService.getTodos().subscribe({
-        error: (err) => {
-          this.errorMessages = 'Wystąpił błąd spróbuj ponownie.';
-        },
-      });
-    }
+    // if (this.todos.length === 0) {
+    //   this.todoApiService.getTodos().subscribe({
+    //     error: (err) => {
+    //       this.errorMessages = 'Wystąpił błąd spróbuj ponownie.';
+    //     },
+    //   });
+    // }
 
-    this.sub = this.store.select(selectTodoListTodos).subscribe({
-      next: (todos) => {
-        console.log('Wszystkie zadania', todos);
+    this.store.dispatch(TodoListActions.fetchTodos());
+
+    this.sub = this.store.select(selectTodoListTodosState).subscribe({
+      next: ({ todos, loading, errorMsg }) => {
+        console.log('test', todos, loading, errorMsg);
         this.todos = [...todos];
+        this.errorMessages = errorMsg;
       },
     });
 

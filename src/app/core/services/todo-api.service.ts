@@ -18,13 +18,12 @@ export class TodoApiService {
   ) {}
 
   getTodos(): Observable<Todo[]> {
-    return this.http
-      .get<Todo[]>('http://localhost:3000/todo')
-      .pipe(
-        tap((todos) =>
-          this.store.dispatch(TodosActions.fetchTodosSuccess({ todos }))
-        )
-      );
+    return this.http.get<Todo[]>('http://localhost:3000/todo');
+    // .pipe(
+    //   tap((todos) =>
+    //     this.store.dispatch(TodosActions.fetchTodosSuccess({ todos }))
+    //   )
+    // );
   }
 
   getTodo(id: number): Observable<Todo> {

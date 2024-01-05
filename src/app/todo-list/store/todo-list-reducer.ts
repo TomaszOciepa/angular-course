@@ -4,7 +4,7 @@ import * as TodoListActions from './todo-list-action';
 
 export interface TodoListState {
   todos: Todo[];
-  featchTodosErrorMessage: String | null;
+  featchTodosErrorMessage: string | null;
   loading: boolean;
 }
 

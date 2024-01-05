@@ -16,10 +16,7 @@ export const changeTodoStatus = createAction(
   props<{ id: number }>()
 );
 
-export const fetchTodos = createAction(
-  '[Todo List] Featch Todos',
-  props<{ todos: Todo[] }>()
-);
+export const fetchTodos = createAction('[Todo List] Featch Todos');
 
 export const fetchTodosSuccess = createAction(
   '[Todo List] featch Todos Success',
@@ -28,5 +25,5 @@ export const fetchTodosSuccess = createAction(
 
 export const fetchTodosFailed = createAction(
   '[Todo List] featch Todos Failed',
-  props<{ errorMessage: String }>()
+  props<{ errorMessage: string }>()
 );

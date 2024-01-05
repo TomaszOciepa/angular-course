@@ -23,6 +23,7 @@ import { ChildBComponent } from './todo-list/child-b/child-b.component';
 import { StoreModule } from '@ngrx/store';
 import { todoListReducer } from './todo-list/store/todo-list-reducer';
 import { EffectsModule } from '@ngrx/effects';
+import { TodoListEffects } from './todo-list/store/todo-list.effects';
 
 registerLocaleData(localePl);
 
@@ -49,7 +50,7 @@ registerLocaleData(localePl);
     HttpClientModule,
     FormsModule,
     StoreModule.forRoot({ todos: todoListReducer }),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([TodoListEffects]),
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'pl' }],
   bootstrap: [AppComponent],
