@@ -4,6 +4,8 @@ import * as TodoListActions from './todo-list-action';
 
 export interface TodoListState {
   todos: Todo[];
+  featchTodosErrorMessage: String | null;
+  loading: boolean;
 }
 
 const initialState: TodoListState = {
@@ -24,6 +26,8 @@ const initialState: TodoListState = {
     //   name: 'Umyj naczynia3.',
     // },
   ],
+  featchTodosErrorMessage: null,
+  loading: false,
 };
 
 const _todoListReducer = createReducer(
@@ -45,6 +49,17 @@ const _todoListReducer = createReducer(
   on(TodoListActions.fetchTodosSuccess, (state, action) => ({
     ...state,
     todos: [...action.todos],
+    loading: false,
+    featchTodosErrorMessage: null,
+  })),
+  on(TodoListActions.fetchTodos, (state, action) => ({
+    ...state,
+    loading: true,
+  })),
+  on(TodoListActions.fetchTodosFailed, (state, action) => ({
+    ...state,
+    loading: false,
+    featchTodosErrorMessage: action.errorMessage,
   }))
 );
 
