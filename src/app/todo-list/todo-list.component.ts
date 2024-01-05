@@ -34,13 +34,13 @@ export class TodoListComponent implements OnInit, OnDestroy {
     // this.sub = this.todoService.todoChanged.subscribe({
     //   next: (arrTodos) => (this.todos = arrTodos),
     // });
-    // if (this.todos.length === 0) {
-    //   this.todoApiService.getTodos().subscribe({
-    //     error: (err) => {
-    //       this.errorMessages = 'Wystąpił błąd spróbuj ponownie.';
-    //     },
-    //   });
-    // }
+    if (this.todos.length === 0) {
+      this.todoApiService.getTodos().subscribe({
+        error: (err) => {
+          this.errorMessages = 'Wystąpił błąd spróbuj ponownie.';
+        },
+      });
+    }
 
     this.sub = this.store.select(selectTodoListTodos).subscribe({
       next: (todos) => {

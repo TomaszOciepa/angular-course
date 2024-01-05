@@ -3,40 +3,54 @@ import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 import { Todo } from 'src/app/shared/interfaces/todo.interface';
 import { TodoService } from './todo.service';
+import * as TodosActions from '../../todo-list/store/todo-list-action';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/store/app.reducer';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TodoApiService {
+  constructor(
+    private http: HttpClient,
+    private todoService: TodoService,
+    private store: Store<AppState>
+  ) {}
 
-  constructor(private http: HttpClient, private todoService: TodoService) {}
-
-  getTodos(): Observable<Todo[]>{
-    return this.http.get<Todo[]>('http://localhost:3000/todo').pipe(
-      tap((todos)=> this.todoService.todos = todos)
-    );
+  getTodos(): Observable<Todo[]> {
+    return this.http
+      .get<Todo[]>('http://localhost:3000/todo')
+      .pipe(
+        tap((todos) =>
+          this.store.dispatch(TodosActions.fetchTodosSuccess({ todos }))
+        )
+      );
   }
 
-  getTodo(id: number): Observable<Todo>{
-    return this.http.get<Todo>(`http://localhost:3000/todo/${id}`)
+  getTodo(id: number): Observable<Todo> {
+    return this.http.get<Todo>(`http://localhost:3000/todo/${id}`);
   }
 
-  postTodo(todo: Omit<Todo, "id">): Observable<Todo>{
-    return this.http.post<Todo>('http://localhost:3000/todo', todo).pipe(
-      tap(todo => this.todoService.addTodo(todo))
-    );
+  postTodo(todo: Omit<Todo, 'id'>): Observable<Todo> {
+    return this.http
+      .post<Todo>('http://localhost:3000/todo', todo)
+      .pipe(tap((todo) => this.todoService.addTodo(todo)));
   }
 
-  deleteTodo(id: number): Observable<{}>{
+  deleteTodo(id: number): Observable<{}> {
     // return this.http.delete('http://localhost:3000/todo/'+ id);
-    return this.http.delete<{}>(`http://localhost:3000/todo/${id}`).pipe(
-      tap(()=> this.todoService.deleteTodo(id))
-    );
+    return this.http
+      .delete<{}>(`http://localhost:3000/todo/${id}`)
+      .pipe(tap(() => this.todoService.deleteTodo(id)));
   }
 
-  patchTodo(id: number, todo: Omit<Todo, "id" | "name">): Observable<any>{
-    return this.http.patch<any>(`http://localhost:3000/todo/${id}`,todo).pipe(
-      tap((todo)=> this.todoService.changeTodoStatus(todo.id, todo.isComplete))
-    );
+  patchTodo(id: number, todo: Omit<Todo, 'id' | 'name'>): Observable<any> {
+    return this.http
+      .patch<any>(`http://localhost:3000/todo/${id}`, todo)
+      .pipe(
+        tap((todo) =>
+          this.todoService.changeTodoStatus(todo.id, todo.isComplete)
+        )
+      );
   }
 }

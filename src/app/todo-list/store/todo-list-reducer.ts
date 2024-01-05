@@ -8,21 +8,21 @@ export interface TodoListState {
 
 const initialState: TodoListState = {
   todos: [
-    {
-      id: 1,
-      isComplete: true,
-      name: 'Umyj naczynia.',
-    },
-    {
-      id: 2,
-      isComplete: true,
-      name: 'Umyj naczynia.2',
-    },
-    {
-      id: 3,
-      isComplete: false,
-      name: 'Umyj naczynia3.',
-    },
+    // {
+    //   id: 1,
+    //   isComplete: true,
+    //   name: 'Umyj naczynia.',
+    // },
+    // {
+    //   id: 2,
+    //   isComplete: true,
+    //   name: 'Umyj naczynia.2',
+    // },
+    // {
+    //   id: 3,
+    //   isComplete: false,
+    //   name: 'Umyj naczynia3.',
+    // },
   ],
 };
 
