@@ -11,5 +11,5 @@ export const selectTodoListTodos = createSelector(
 
 export const selectTodoListActiveTodos = createSelector(
   selectTodoList,
-  (state: TodoListState) => state.todos.filter((todo) => todo.isComplete)
+  (state: TodoListState) => state.todos.filter((todo) => !todo.isComplete)
 );

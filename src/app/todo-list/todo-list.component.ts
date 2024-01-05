@@ -6,6 +6,10 @@ import { TodoApiService } from '../core/services/todo-api.service';
 import { Store } from '@ngrx/store';
 import { AppState } from '../store/app.reducer';
 import * as TodoListActions from './store/todo-list-action';
+import {
+  selectTodoListActiveTodos,
+  selectTodoListTodos,
+} from './store/todo-list.selector';
 
 @Component({
   selector: 'app-todo-list',
@@ -38,10 +42,17 @@ export class TodoListComponent implements OnInit, OnDestroy {
     //   });
     // }
 
-    this.store.select('todos').subscribe({
+    this.store.select(selectTodoListTodos).subscribe({
       next: (todos) => {
-        console.log(todos.todos);
-        this.todos = [...todos.todos];
+        console.log('Wszystkie zadania', todos);
+        this.todos = [...todos];
+      },
+    });
+
+    this.store.select(selectTodoListActiveTodos).subscribe({
+      next: (todos) => {
+        console.log('Aktywne zadania', todos);
+        // this.todos = [...todos];
       },
     });
   }
